@@ -39,42 +39,44 @@
   </head>
 
   <body onload="iniciarJogo()">
-    <div class="stats">
-      <table border="0">
-        <tr>
-          <td>
-            <img src="imagens/balao_azul_grande.png" />
-          </td>
-          <td>
-            <span id="full" class="counter"></span>
-          </td>
-        </tr>
-      </table>
+    <div class="container">
+      <div class="stats">
+        <table border="0">
+          <tr>
+            <td>
+              <img src="imagens/balao_azul_grande.png" />
+            </td>
+            <td>
+              <span id="full" class="counter"></span>
+            </td>
+          </tr>
+        </table>
 
-      <br />
-      <table border="0">
-        <tr>
-          <td>
-            <img src="imagens/balao_azul_grande_estourado.png" />
-          </td>
-          <td>
-            <span id="popped" class="counter"></span>
-          </td>
-        </tr>
-      </table>
+        <br />
+        <table border="0">
+          <tr>
+            <td>
+              <img src="imagens/balao_azul_grande_estourado.png" />
+            </td>
+            <td>
+              <span id="popped" class="counter"></span>
+            </td>
+          </tr>
+        </table>
 
-      <br />
-      <table border="0" style="width: 140px;height: 132px;">
-        <tr>
-          <td style="background: url('imagens/cronometro.png')">
-            <span id="cron" class="cron"></span>
-          </td>
-        </tr>
-      </table>
-    </div>
+        <br />
+        <table border="0" style="width: 140px;height: 132px;">
+          <tr>
+            <td style="background: url('imagens/cronometro.png')">
+              <span id="cron" class="cron"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div id="scene" class="scene">
-      <div id="baloonsContainer"></div>
+      <div id="scene" class="scene">
+        <div id="balloonsContainer"></div>
+      </div>
     </div>
   </body>
 </html>

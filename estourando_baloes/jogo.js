@@ -4,6 +4,11 @@ const mapSeconds = {
   3: 30
 }
 
+const imgPath = {
+  full: 'imagens/balao_azul_pequeno.png',
+  popped: 'imagens/balao_azul_pequeno_estourado.png'
+}
+
 let timerId
 
 function iniciarJogo() {
@@ -32,27 +37,34 @@ function timeCount(seconds) {
   timerId = setTimeout(() => timeCount(--seconds), 1000)
 }
 
+function addPopEvent(balloon) {
+  balloon.onclick = function () {
+    pop(this)
+  }
+}
+
 function createBalloons(qtdBalloons) {
-  const scene = document.getElementById('baloonsContainer')
-  for (let i = 0; i < qtdBalloons; i++) {
-    const balloon = document.createElement('img')
-    balloon.src = 'imagens/balao_azul_pequeno.png'
-    balloon.style.margin = '10px'
-    balloon.onclick = function () {
-      pop(this)
+  const scene = document.getElementById('balloonsContainer')
+  if (!scene.children.length) {
+    for (let i = 0; i < qtdBalloons; i++) {
+      const balloon = document.createElement('img')
+      balloon.src = imgPath.full
+      balloon.style.margin = '10px'
+      addPopEvent(balloon)
+      scene.appendChild(balloon)
     }
-    scene.appendChild(balloon)
   }
 }
 
 function pop(balloon) {
-  balloon.src = 'imagens/balao_azul_pequeno_estourado.png'
+  balloon.src = imgPath.popped
   const fullBalloons = document.getElementById('full')
   const poppedBalloons = document.getElementById('popped')
   let fullNumber = Number(fullBalloons.innerHTML)
   fullBalloons.innerHTML = --fullNumber
   let poppedNumber = Number(poppedBalloons.innerHTML)
   poppedBalloons.innerHTML = ++poppedNumber
+  balloon.setAttribute('onclick', '')
   checkGameState(fullNumber)
 }
 
@@ -65,5 +77,10 @@ function checkGameState(fullBalloons) {
 }
 
 function reset() {
-
+  const balloons = document.getElementById('balloonsContainer').children
+  for (let i = 0; i < balloons.length; i++) {
+    balloons[i].src = imgPath.full
+    addPopEvent(balloons[i])
+  }
+  iniciarJogo()
 }
