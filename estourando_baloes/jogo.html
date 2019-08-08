@@ -12,6 +12,8 @@
         height: 500px;
         background: #fff;
         border: 1px solid #a2a2a2;
+        text-align: center;
+        margin-right: 5px;
       }
 
       .scene {
@@ -21,43 +23,58 @@
         background: url('imagens/cenario.png');
         background-position: bottom;
       }
+      .scene #baloonsContainer {
+        padding-left: 10px;
+      }
+
+      .cron {
+        color: red;
+        font-size: 30px;
+      }
+
+      .counter {
+        font-size: 40px;
+      }
     </style>
   </head>
 
-  <body>
+  <body onload="iniciarJogo()">
     <div class="stats">
-      <table border="1">
+      <table border="0">
         <tr>
           <td>
             <img src="imagens/balao_azul_grande.png" />
           </td>
           <td>
-            10
+            <span id="full" class="counter"></span>
           </td>
         </tr>
       </table>
 
       <br />
-      <table border="1">
+      <table border="0">
         <tr>
           <td>
             <img src="imagens/balao_azul_grande_estourado.png" />
           </td>
           <td>
-            10
+            <span id="popped" class="counter"></span>
           </td>
         </tr>
       </table>
 
       <br />
-      <table border="1" style="width: 140px;height: 132px;">
+      <table border="0" style="width: 140px;height: 132px;">
         <tr>
           <td style="background: url('imagens/cronometro.png')">
+            <span id="cron" class="cron"></span>
           </td>
         </tr>
       </table>
     </div>
 
-    <div class="scene"></div>
+    <div id="scene" class="scene">
+      <div id="baloonsContainer"></div>
+    </div>
   </body>
 </html>
