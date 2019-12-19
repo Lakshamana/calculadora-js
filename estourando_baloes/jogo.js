@@ -1,7 +1,7 @@
 const mapSeconds = {
   1: 120,
   2: 60,
-  3: 30
+  3: 5
 }
 
 const imgPath = {
@@ -28,13 +28,15 @@ function iniciarJogo() {
 }
 
 function timeCount(seconds) {
-  if (seconds < 0) {
-    clearTimeout(timerId)
-    alert('Fim de jogo, você perdeu')
-    return
-  }
-  document.getElementById('cron').innerHTML = seconds
-  timerId = setTimeout(() => timeCount(--seconds), 1000)
+  timerId = setInterval(() => {
+    if (seconds < 0) {
+      clearInterval(timerId)
+      alert('Fim de jogo, você perdeu')
+      reset()
+      return
+    }
+    document.getElementById('cron').innerHTML = --seconds
+  }, 1000)
 }
 
 function addPopEvent(balloon) {
