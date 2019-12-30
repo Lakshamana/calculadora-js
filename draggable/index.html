@@ -39,9 +39,7 @@
           document.onmousemove = onDragging
           document.onmouseup = finishDragging
         }
-  
-        let over = false
-        let tmp
+
         function onDragging(e) {
           e.preventDefault()
           // calc final position offset
@@ -52,26 +50,6 @@
           // set div position with new offset
           elt.style.left = (elt.offsetLeft - fpX) + 'px'
           elt.style.top = (elt.offsetTop - fpY) + 'px'
-
-          const chk1 = document.getElementById('checkpoint')
-          chk1.onmouseenter = evt => {
-            evt.preventDefault()
-            if (!over) {
-              tmp = chk1.innerHTML
-              chk1.innerHTML += '<p>Draggable in!</p>'
-              console.log(tmp, chk1.innerHTML)
-              over = true
-            }
-          }
-
-          chk1.onmouseleave = evt => {
-            evt.preventDefault()
-            if (over) {
-              console.log('tmp', tmp)
-              chk1.innerHTML = tmp
-              over = false
-            }
-          }
         }
   
         function finishDragging(e) {
@@ -81,6 +59,29 @@
           document.onmouseup = undefined
         }
       }
+
+      let over = false
+      let tmp
+      const chk1 = document.getElementById('checkpoint')
+      chk1.onmouseenter = evt => {
+        evt.preventDefault()
+        if (over) {
+          tmp = chk1.innerHTML
+          chk1.innerHTML += '<p>Draggable in!</p>'
+          console.log(tmp, chk1.innerHTML)
+          over = true
+        }
+      }
+
+      chk1.onmouseleave = evt => {
+        evt.preventDefault()
+        if (over) {
+          console.log('tmp', tmp)
+          chk1.innerHTML = tmp
+          over = false
+        }
+      }
+        
       makeDraggable(document.getElementById('drag'))
     </script>
 </body>
